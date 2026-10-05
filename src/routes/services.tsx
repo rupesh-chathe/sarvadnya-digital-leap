@@ -5,11 +5,11 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { generalEnquiryMessage } from "@/utils/whatsapp";
 
-type ServiceSearch = { service?: string };
+type ServiceSearch = { service?: string | undefined };
 
 export const Route = createFileRoute("/services")({
   validateSearch: (search: Record<string, unknown>): ServiceSearch => ({
-    service: typeof search.service === "string" ? search.service : undefined,
+    service: typeof search["service"] === "string" ? search["service"] : undefined,
   }),
   head: () => ({
     meta: [
